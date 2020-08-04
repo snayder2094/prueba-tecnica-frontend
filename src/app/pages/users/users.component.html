@@ -1,0 +1,49 @@
+<h1>
+Listado de usuarios
+</h1>
+<hr/>
+
+<div class="row">
+  <div class="col text-right">
+    <button routerLink="/user/new" class="btn btn-primary">
+      <i class="fa fa-plus"></i>
+      Crear usuario
+    </button>
+  </div>
+</div>
+
+<table *ngIf="users.length !== 0" class="table mt-3 table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">C.C</th>
+    <th scope="col">Name</th>
+    <th scope="col">Country</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users; let i = index">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>{{ user.Name }}</td>
+    <td>{{ user.Country }}</td>
+    <td>
+
+      <button class="btn btn-danger"
+              (click)="borrarusuario( user, i ) ">
+        <i class="fa fa-trash"></i>
+      </button>
+
+    </td>
+  </tr>
+
+  </tbody>
+</table>
+
+<div *ngIf="users.length === 0"
+     class="alert alert-warning text-center mt-3 animated fadeIn faster">
+  <h4 class="alert-heading">No hay registros</h4>
+  <p>
+    <i class="fa fa-exclamation fa-2x"></i>
+  </p>
+</div>
+
